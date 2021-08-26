@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Page404 from "./pages/Page404";
 import Signup from "./pages/Signup";
+import TestPage from "./pages/TestPage";
+
+import "./App.css";
 
 export default function App(props) {
   return (
@@ -15,6 +18,7 @@ export default function App(props) {
         <Route path="/dashboard" component={Dashboard} />
         <Route exact path="/sign-up" component={Signup} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/test-page" component={TestPage} />
         <Route path="/" component={Page404} />
       </Switch>
     </div>

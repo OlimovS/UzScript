@@ -1,0 +1,45 @@
+/* Global */
+.cursor__pointer {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f76e4b6;
+  border-radius: 0;
+  outline: none;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ===================================================== */
+/* ============ CHALLENGE SOLVING BOARD ================ */
+/* ===================================================== */
+.challenge__middle__touch__resizer,
+.challenge__scrollable__content,
+.challenge__solving__board {
+  height: calc(100vh - 56px);
+}
+
+.challenge__scrollable__content {
+  overflow-y: auto;
+}
+
+.challenge__resizable {
+  /* border-right: 1px solid grey; */
+  position: relative;
+}
+
+.challenge__middle__touch__resizer {
+  padding: 0px 1px;
+  border-right: 1px solid rgb(177, 174, 174);
+  border-left: 1px solid rgb(177, 174, 174);
+}
