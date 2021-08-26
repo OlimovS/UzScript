@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {UnControlled  as CodeMirror, Controlled as ViewCodeMirror} from 'react-codemirror2';
 import './App.css';
+import ShowJSCodeRunResult from './components/ShowJSCodeRunResult';
 import uzScriptParser from './uzscript-engine/parser';
 
 
@@ -16,12 +17,17 @@ funksiya salomAyt() {
 }`;
 
 function App() {
-  const [editorState, setEditorState] = useState(defaultValue)
+  const [editorState, setEditorState] = useState(defaultValue);
+  const [jsViewState, setJSViewState] = useState(uzScriptParser(defaultValue));
+
 
   const handleChangeEditorState = (editor, data, value) => {
     // console.log({editor, data, value})
     setEditorState(value);
+    setJSViewState(uzScriptParser(value));
   }
+
+
   return (
     <div className="App container-fluid">
       <h1>
@@ -43,7 +49,7 @@ function App() {
         <div className='col-6'>
           <h2>Javascript Version</h2>
           <ViewCodeMirror 
-            value={uzScriptParser(editorState)}
+            value={jsViewState}
             options={{
               mode: 'javascript',
               theme: 'material',
@@ -52,6 +58,7 @@ function App() {
           />
         </div>
       </div>
+      <ShowJSCodeRunResult jsCode={jsViewState} />
     </div>
   );
 }

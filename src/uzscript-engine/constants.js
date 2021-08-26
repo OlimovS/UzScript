@@ -41,6 +41,11 @@ const basicKeywords = {
     "kut": "await"
 }
 
+const otherKeywords ={
+    'ekran.yoz': 'ekrangaYozishFunksiyasi'
+}
+
 export const UzScriptToJavascriptValues = {
-   ...basicKeywords
+   ...basicKeywords,
+   ...otherKeywords
 }
