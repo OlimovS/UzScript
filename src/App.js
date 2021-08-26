@@ -1,68 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  UnControlled as CodeMirror,
-  Controlled as ViewCodeMirror,
-} from "react-codemirror2";
-import "./App.css";
-import ShowJSCodeRunResult from "./components/ShowJSCodeRunResult";
-import ProgrammingPlayDashboard from "./pages/ProgrammingPlayDashboard";
-import uzScriptParser from "./uzscript-engine/parser";
+import { Route, Switch } from "react-router-dom";
+import TopNavbar from "./components/TopNav";
+import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Page404 from "./pages/Page404";
+import Signup from "./pages/Signup";
 
-// const MODE = "javascript";
-const MODE = "javascript-copy";
-
-const defaultValue = `// Salom dunyo dasturi
-
-
-funksiya salomAyt() {
-  qaytar "Salom dunyo";
-}`;
-
-function App() {
-  const [editorState, setEditorState] = useState(defaultValue);
-  const [jsViewState, setJSViewState] = useState(uzScriptParser(defaultValue));
-
-  const handleChangeEditorState = (editor, data, value) => {
-    // console.log({editor, data, value})
-    setEditorState(value);
-    setJSViewState(uzScriptParser(value));
-  };
-
+export default function App(props) {
   return (
-    <div className="App container-fluid">
-      <h1>Hello</h1>
-      <div className="row">
-        <div className="col-6">
-          <h2>UzScript</h2>
-          <CodeMirror
-            value={defaultValue}
-            options={{
-              mode: MODE,
-              theme: "material",
-              lineNumbers: true,
-            }}
-            onChange={handleChangeEditorState}
-          />
-        </div>
-        <div className="col-6">
-          <h2>Javascript Version</h2>
-          <ViewCodeMirror
-            value={jsViewState}
-            options={{
-              mode: "javascript",
-              theme: "material",
-              lineNumbers: true,
-            }}
-          />
-        </div>
-      </div>
-      <ShowJSCodeRunResult jsCode={jsViewState} />
+    <div>
+      <TopNavbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route exact path="/sign-up" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Route path="/" component={Page404} />
+      </Switch>
     </div>
   );
-}
-
-// export default App;
-
-export default function MyApp(props) {
-  return <ProgrammingPlayDashboard />;
 }
