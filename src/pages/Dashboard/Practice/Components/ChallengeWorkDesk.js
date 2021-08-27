@@ -38,6 +38,7 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
           SetTestRunStatus("done");
         })
         .catch((err) => {
+          console.log(err);
           SetTestRunStatus("done");
           setCodeRunResponse(err);
         });

@@ -10,17 +10,26 @@ export const checkQuestionAnswers = (strUzScriptCode, tests) => {
       console.log({ fnc });
 
       for (let i = 0; i < tests.length; i++) {
-        const result = window.eval.call(window, `(${fnc})`)(...tests[i].inputs);
-        if (result !== tests[i].output) {
-          reject({ status: TEST_FAILED, index: i + 1, allCases: tests.length });
-        } else {
-          console.log({ result, answer: tests[i].output });
+        const currTest = tests[i];
+        const result = window.eval.call(window, `(${fnc})`)(...currTest.inputs);
+        if (result !== currTest.output) {
+          reject({
+            status: TEST_FAILED,
+            index: i + 1,
+            allCases: tests.length,
+            inputs: [...currTest.inputs],
+            output: currTest.output,
+          });
         }
       }
 
       resolve({ status: TEST_SUCCESS });
     } catch (error) {
-      reject({ status: ERROR_OCCURED, message: error.message });
+      reject({
+        status: ERROR_OCCURED,
+        message: error.message,
+        name: error.name,
+      });
     }
   });
 };
