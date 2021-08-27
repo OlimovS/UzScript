@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+import { Card, Pagination } from "react-bootstrap";
 
 function ChallengeQuestDesk({ challenge = {} }) {
   return (
@@ -32,8 +32,14 @@ function ChallengeQuestDesk({ challenge = {} }) {
           })}
         </div>
       </div>
-      <div className="challenge__bottom__navbar">
-        <p>bottom nav</p>
+      <div className="challenge__bottom__navbar mb-2 mb-sm-0">
+        <Pagination size="small" className="mb-0 d-flex justify-content-center">
+          <Pagination.Prev />
+          <div className="d-flex align-items-center justify-content-center px-3">
+            <p className="m-0">1/2</p>
+          </div>
+          <Pagination.Next />
+        </Pagination>
       </div>
     </div>
   );

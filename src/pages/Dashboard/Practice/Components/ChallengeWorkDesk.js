@@ -17,7 +17,7 @@ function ChallengeWorkingDesk({ challenge }) {
           wrapClassName="CodeMirror-h-sm-100"
         />
       </div>
-      <div className="challenge__bottom__navbar d-flex align-items-center">
+      <div className="challenge__bottom__navbar  my-2 my-sm-0 d-flex align-items-center">
         <div>
           <AiOutlineUnorderedList size="30" />
         </div>
