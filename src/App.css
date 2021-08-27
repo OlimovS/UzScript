@@ -54,11 +54,16 @@
 
 .challenge__bottom__navbar {
   flex-grow: 1;
-  padding: 5px 12px;
+  padding: 5px 10px;
 }
 
 .challenge__quest__example {
   font-size: 0.9em;
+}
+
+.challenge__code__response__show {
+  height: 100px;
+  overflow-y: auto;
 }
 
 /* ================================================================================= */
