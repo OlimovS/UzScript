@@ -9,12 +9,7 @@ import uzScriptParser from "../uzscript-engine/parser";
 // const MODE = "javascript";
 const MODE = "javascript-copy";
 
-const defaultValue = `// Salom dunyo dasturi
-
-
-funksiya salomAyt() {
-  qaytar "Salom dunyo";
-}`;
+const defaultValue = `// UzScriptda kod yozib boshlang\n`;
 
 function TestPage() {
   const [editorState, setEditorState] = useState(defaultValue);
@@ -50,6 +45,7 @@ function TestPage() {
               mode: "javascript",
               theme: "material",
               lineNumbers: true,
+              readOnly: "nocursor",
             }}
           />
         </div>

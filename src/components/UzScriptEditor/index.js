@@ -4,17 +4,21 @@ import { EDITOR_LANGUAGE } from "../../utils/constants";
 
 function UzScriptEditor({
   handleChangeEditorState,
-  defaultValue,
+  defaultValue = "// UzScriptda kod yozib boshlang\n",
   theme = "material",
+  options = {},
+  ...rest
 }) {
   return (
     <div>
       <CodeMirror
+        {...rest}
         value={defaultValue}
         options={{
           mode: EDITOR_LANGUAGE,
           theme: theme,
           lineNumbers: true,
+          ...options,
         }}
         onChange={handleChangeEditorState}
       />

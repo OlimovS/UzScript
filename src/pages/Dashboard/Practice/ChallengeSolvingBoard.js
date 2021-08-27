@@ -1,7 +1,11 @@
 import { Resizable } from "re-resizable";
 import { CardColumns } from "react-bootstrap";
+import UzScriptEditor from "../../../components/UzScriptEditor";
 
 function ChallengeSolvingBoard(props) {
+  const handleChangeEditorState = (editor, data, value) => {
+    console.log({ value });
+  };
   return (
     <div className="challenge__solving__board d-flex justify-content-center">
       <Resizable
@@ -25,16 +29,7 @@ function ChallengeSolvingBoard(props) {
         }}
       >
         <div className="challenge__scrollable__content p-1">
-          <div>
-            {Array(20)
-              .fill(1)
-              .map((el, idx) => (
-                <p key={idx}>
-                  lorem ipsum Given a string s, find the length of the longest
-                  substring without repeating characters.
-                </p>
-              ))}
-          </div>
+          <div></div>
         </div>
       </Resizable>
       <div className="challenge__middle__touch__resizer d-flex justify-content-center align-items-center">
@@ -45,16 +40,12 @@ function ChallengeSolvingBoard(props) {
         </div>
       </div>
       <div className="challenge__scrollable__content p-1 w-100">
-        <h1>hello</h1>
         <div>
-          {Array(20)
-            .fill(1)
-            .map((el, idx) => (
-              <p key={idx}>
-                lorem ipsum Given a string s, find the length of the longest
-                substring without repeating characters.
-              </p>
-            ))}
+          <UzScriptEditor
+            theme="neat"
+            handleChangeEditorState={handleChangeEditorState}
+            style={{ height: "100%" }}
+          />
         </div>
       </div>
     </div>

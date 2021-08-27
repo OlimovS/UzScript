@@ -43,6 +43,7 @@ const basicKeywords = {
 
 const otherKeywords = {
   "ekran.yoz": "ekrangaYozishFunksiyasi",
+  quruvchi: "constructor",
 };
 
 export const UzScriptToJavascriptValues = {
