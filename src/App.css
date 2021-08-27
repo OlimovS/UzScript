@@ -23,7 +23,7 @@
 /* ===================================================== */
 /* ============ CHALLENGE SOLVING BOARD ================ */
 /* ===================================================== */
-.challenge__middle__touch__resizer,
+.middle__touch__resizer,
 .challenge__scrollable__content,
 .challenge__solving__board {
   height: calc(100vh - 56px);
@@ -38,8 +38,50 @@
   position: relative;
 }
 
-.challenge__middle__touch__resizer {
+.middle__touch__resizer {
+  font-size: 1.2em;
+  padding: 0px;
+  border-right: 1px solid rgba(177, 174, 174, 0.5);
+  border-left: 1px solid rgb(177, 174, 174, 0.5);
+  position: relative;
+  left: -2px;
+  background-color: white;
+}
+
+.middle__touch__resizer .column__dots {
+  position: relative;
+  left: -1px;
+  top: -50px;
   padding: 0px 1px;
-  border-right: 1px solid rgb(177, 174, 174);
-  border-left: 1px solid rgb(177, 174, 174);
+}
+
+.challenge__bottom__navbar {
+  flex-grow: 1;
+  padding: 4px 10px;
+}
+
+/* ================================================================================= */
+/* ================================================================================= */
+/* ================================= LIBRARY RELATED =============================== */
+/* ================================================================================= */
+/* ================================================================================= */
+/* ===================================================== */
+/* ============ CODEMIRROR EDITOR LIBRARY ================ */
+/* ===================================================== */
+.CodeMirror-h-100,
+.CodeMirror-h-100 .CodeMirror {
+  height: 100%;
+}
+
+.cm-s-material .CodeMirror-scrollbar-filler {
+  background-color: #263238;
+}
+
+/* 30px kamroq */
+.h-100-50px {
+  height: calc(100% - 50px);
+}
+
+.h-100-50px .CodeMirror {
+  height: 100%;
 }

@@ -10,7 +10,7 @@ function UzScriptEditor({
   ...rest
 }) {
   return (
-    <div>
+    <div className="h-100">
       <CodeMirror
         {...rest}
         value={defaultValue}
