@@ -9,7 +9,7 @@ function ChallengeQuestDesk({ challenge = {} }) {
           <p>{challenge.content}</p>
         </div>
         <div>
-          {challenge?.examples.map((example, idx) => {
+          {challenge?.examples?.map((example, idx) => {
             return (
               <div key={idx} className="mb-2">
                 <h6>Misol {idx + 1}</h6>
