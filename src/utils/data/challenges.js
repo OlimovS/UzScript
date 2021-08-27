@@ -28,7 +28,7 @@ export const challenges = [
       tests: [
         {
           inputs: [12, 34],
-          output: "46",
+          output: 46,
         },
         {
           inputs: [8888, 3854],
@@ -37,6 +37,10 @@ export const challenges = [
         {
           inputs: [-123, -245],
           output: -368,
+        },
+        {
+          inputs: [0, 1222222],
+          output: 1222222,
         },
       ],
     },
@@ -49,5 +53,38 @@ export const challenges = [
     difficulty: "oson",
     status: false,
     acceptance: 94,
+    examples: [
+      {
+        input: "259, 76",
+        output: "19684",
+        description: "259 ga 76 ni ko'paytirsak 259 * 76=19684 bo'ladi",
+      },
+      {
+        input: "968, 2714",
+        output: "2627152",
+        description: "968 ga 2714 ni ko'paytirsak 968 * 2714=2627152 bo'ladi",
+      },
+    ],
+    solutionSection: {
+      functionName: "sonlarniKopaytir",
+      inputConfig: {
+        prefix: "son",
+        count: 2,
+      },
+      tests: [
+        {
+          inputs: [259, 76],
+          output: 19684,
+        },
+        {
+          inputs: [968, 2714],
+          output: 2627152,
+        },
+        {
+          inputs: [0, -121212],
+          output: 0,
+        },
+      ],
+    },
   },
 ];

@@ -1,18 +1,19 @@
 import { UzScriptToJavascriptValues } from "./constants";
 
-const comments = ["/*", "//"];
+export const LANG_COMMENTS = ["/*", "//"];
 
-// Comments
-const isMultilineCommentEarly = (code) =>
+// LANG_COMMENTS
+export const isMultilineCommentEarly = (code) =>
   code.indexOf("/*") > code.indexOf("//");
-const hasComment = (code) => comments.some((comment) => code.includes(comment));
-const hasMultiLineEnd = (code) => code.includes("*/");
-const getEarlyComment = (code) => {
+export const hasComment = (code) =>
+  LANG_COMMENTS.some((comment) => code.includes(comment));
+export const hasMultiLineEnd = (code) => code.includes("*/");
+export const getEarlyComment = (code) => {
   if (isMultilineCommentEarly(code)) {
-    return comments[0];
+    return LANG_COMMENTS[0];
   }
 
-  return comments[1];
+  return LANG_COMMENTS[1];
 };
 
 export default function uzScriptParser(uzscript) {
@@ -47,7 +48,7 @@ export default function uzScriptParser(uzscript) {
       const pureCode = lineCode.substring(0, separetedIndex);
       const commentCode = lineCode.substring(separetedIndex + 2);
 
-      if (comment === comments[0]) {
+      if (comment === LANG_COMMENTS[0]) {
         isMultilineCommentGoing = true;
       }
 
