@@ -19,6 +19,27 @@ export const challenges = [
         description: "8888 ga 3854 ni qo'shsak 8888+3854=12742 bo'ladi",
       },
     ],
+    solutionSection: {
+      functionName: "sonlarniQosh",
+      inputConfig: {
+        prefix: "son",
+        count: 2,
+      },
+      tests: [
+        {
+          inputs: [12, 34],
+          output: "46",
+        },
+        {
+          inputs: [8888, 3854],
+          output: 12742,
+        },
+        {
+          inputs: [-123, -245],
+          output: -368,
+        },
+      ],
+    },
   },
   {
     id: 2,
