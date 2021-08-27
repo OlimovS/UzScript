@@ -23,10 +23,12 @@
 /* ===================================================== */
 /* ============ CHALLENGE SOLVING BOARD ================ */
 /* ===================================================== */
-.middle__touch__resizer,
-.challenge__scrollable__content,
-.challenge__solving__board {
-  height: calc(100vh - 56px);
+@media (min-width: 576px) {
+  .middle__touch__resizer,
+  .challenge__scrollable__content,
+  .challenge__solving__board {
+    height: calc(100vh - 56px);
+  }
 }
 
 .challenge__scrollable__content {
@@ -34,7 +36,6 @@
 }
 
 .challenge__resizable {
-  /* border-right: 1px solid grey; */
   position: relative;
 }
 
@@ -43,21 +44,21 @@
   padding: 0px;
   border-right: 1px solid rgba(177, 174, 174, 0.5);
   border-left: 1px solid rgb(177, 174, 174, 0.5);
-  position: relative;
-  left: -2px;
-  background-color: white;
 }
 
 .middle__touch__resizer .column__dots {
   position: relative;
-  left: -1px;
   top: -50px;
-  padding: 0px 1px;
+  z-index: -1;
 }
 
 .challenge__bottom__navbar {
   flex-grow: 1;
   padding: 4px 10px;
+}
+
+.challenge__quest__example {
+  font-size: 0.9em;
 }
 
 /* ================================================================================= */
@@ -68,20 +69,23 @@
 /* ===================================================== */
 /* ============ CODEMIRROR EDITOR LIBRARY ================ */
 /* ===================================================== */
-.CodeMirror-h-100,
-.CodeMirror-h-100 .CodeMirror {
-  height: 100%;
-}
 
 .cm-s-material .CodeMirror-scrollbar-filler {
   background-color: #263238;
 }
 
 /* 30px kamroq */
-.h-100-50px {
-  height: calc(100% - 50px);
-}
 
-.h-100-50px .CodeMirror {
-  height: 100%;
+@media (min-width: 576px) {
+  .h-sm-100-50px {
+    height: calc(100% - 50px);
+  }
+
+  .h-sm-100-50px .CodeMirror {
+    height: 100%;
+  }
+  .CodeMirror-h-sm-100,
+  .CodeMirror-h-sm-100 .CodeMirror {
+    height: 100%;
+  }
 }

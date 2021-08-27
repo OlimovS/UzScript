@@ -1,19 +1,22 @@
 import { Resizable } from "re-resizable";
-import { CardColumns } from "react-bootstrap";
-import UzScriptEditor from "../../../components/UzScriptEditor";
-import { AiOutlineUnorderedList } from "react-icons/ai";
-import Button from "react-bootstrap/Button";
 import { useWindowSize } from "rooks";
 import ChallengeWorkingDesk from "./Components/ChallengeWorkDesk";
 import ChallengeQuestDesk from "./Components/ChallengeQuestDesk";
 import MiddleResizerColumn from "../../../components/MiddleResizerColumn";
+import { useParams } from "react-router-dom";
+import { useMemo } from "react";
+import { challenges } from "../../../utils/data/challenges";
 
 function ChallengeSolvingBoard(props) {
-  const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
+  const { innerWidth } = useWindowSize();
+  const { taskID } = useParams();
+  const currentChallenge = useMemo(() => {
+    return challenges.find((ch) => ch.id == taskID);
+  }, [taskID]);
 
-  const handleChangeEditorState = (editor, data, value) => {
-    console.log({ value });
-  };
+  window.challenges = challenges;
+  window.taskID = taskID;
+  console.log({ currentChallenge });
   return (
     <div className="challenge__solving__board d-flex justify-content-center flex-column flex-sm-row">
       {innerWidth >= 576 ? (
@@ -37,13 +40,13 @@ function ChallengeSolvingBoard(props) {
             topLeft: false,
           }}
         >
-          <ChallengeWorkingDesk />
+          <ChallengeWorkingDesk challenge={currentChallenge} />
         </Resizable>
       ) : (
-        <ChallengeWorkingDesk />
+        <ChallengeWorkingDesk challenge={currentChallenge} />
       )}
       <MiddleResizerColumn />
-      <ChallengeQuestDesk />
+      <ChallengeQuestDesk challenge={currentChallenge} />
     </div>
   );
 }

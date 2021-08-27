@@ -7,10 +7,11 @@ function UzScriptEditor({
   defaultValue = "// UzScriptda kod yozib boshlang\n",
   theme = "material",
   options = {},
+  wrapClassName = "",
   ...rest
 }) {
   return (
-    <div className="h-100">
+    <div className={wrapClassName}>
       <CodeMirror
         {...rest}
         value={defaultValue}

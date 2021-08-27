@@ -2,18 +2,19 @@ import UzScriptEditor from "../../../../components/UzScriptEditor";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 
-function ChallengeWorkingDesk() {
+function ChallengeWorkingDesk({ challenge }) {
   const handleChangeEditorState = (editor, data, value) => {
     console.log({ value });
   };
   return (
     <div className="challenge__scrollable__content d-flex flex-column order-2">
-      <div className="h-100-50px">
+      <div className="h-sm-100-50px">
         <UzScriptEditor
           theme="material"
           handleChangeEditorState={handleChangeEditorState}
-          className="CodeMirror-h-100"
+          className="CodeMirror-h-sm-100"
           options={{ autofocus: true }}
+          wrapClassName="CodeMirror-h-sm-100"
         />
       </div>
       <div className="challenge__bottom__navbar d-flex align-items-center">
