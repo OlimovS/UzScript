@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 function ChallengeQuestDesk({ challenge = {} }) {
   return (
     <div className="challenge__scrollable__content  d-sm-flex flex-column w-100">
-      <div className="h-sm-100-50px container">
+      <div className="h-sm-100-50px container overflow-auto">
         <div className="p-1">
           <h3>{challenge.title}</h3>
           <p>{challenge.content}</p>
