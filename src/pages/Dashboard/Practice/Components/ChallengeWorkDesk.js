@@ -19,7 +19,7 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
   }, [challenge.id]);
   const [testRunStatus, SetTestRunStatus] = useState("pending");
   const [editorState, setEditorState] = useState(defaultValue);
-  const [codeRunResponse, setCodeRunResponse] = useState();
+  const [codeRunResponse, setCodeRunResponse] = useState({});
 
   const handleChangeEditorState = (editor, data, value) => {
     setEditorState(value);
@@ -39,8 +39,8 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
         })
         .catch((err) => {
           console.log(err);
-          SetTestRunStatus("done");
           setCodeRunResponse(err);
+          SetTestRunStatus("done");
         });
     }, 300);
   };
@@ -59,7 +59,6 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
       </div>
 
       <div className="challenge__bottom__navbar my-2 my-sm-0 ">
-        {/*  */}
         <ShowCodeRunResponse
           response={codeRunResponse}
           status={testRunStatus}
@@ -70,6 +69,17 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
             <AiOutlineUnorderedList size="30" />
           </div>
           <div className="ml-auto">
+            <Button
+              className="mr-3"
+              variant="primary"
+              size="sm"
+              onClick={handleClickRunTests}
+              disabled={testRunStatus == "loading"}
+            >
+              Vazifani topshirish
+            </Button>
+            {/* 
+            // Aslida ikkita button bo'lishi kerak ammo hozirchaga bitta qoyib turamiz. Sabab javoblar front-end tomonda tekshiriliaypti.
             <Button
               className="mr-3"
               variant="outline-info"
@@ -85,7 +95,7 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
               disabled={testRunStatus == "loading"}
             >
               Submit Answer
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { UzScriptToJavascriptValues } from "../../uzscript-engine/constants";
 import {
   getEarlyComment,
   hasComment,
@@ -48,3 +49,24 @@ export function getFunctionCodeOnly(uzscript) {
     .filter((el) => !!el)
     .join(" ");
 }
+
+export const convertJSKeywordsToUzScript = (jsCode) => {
+  debugger;
+  const handleOneKeyword = (word) => {
+    for (let key in UzScriptToJavascriptValues) {
+      const regexWithQuot = new RegExp(
+        ` '${UzScriptToJavascriptValues[key]}' `
+      );
+      console.log(regexWithQuot);
+      const regex = new RegExp(` ${UzScriptToJavascriptValues[key]} `);
+      if (regexWithQuot.test(word)) {
+        return word.replace(regexWithQuot, ` '${key}' `);
+      } else if (regex.test(word)) {
+        return word.replace(regex, ` ${key} `);
+      }
+    }
+
+    return word;
+  };
+  return jsCode.split(" ").map(handleOneKeyword).join(" ");
+};
