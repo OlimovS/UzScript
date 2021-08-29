@@ -4,6 +4,14 @@ import uzScriptParser from "./parser";
 const playgroundKeywords = {
   hodisaTinglovchiQosh: "addEventListener",
   bosish: "click",
+  oyingoh: "paper.view",
+  bolganda: "on",
+  animatsiya: "frame",
+  aylan: "rotate",
+  "sichqoncha-bos": "mousedown",
+  "sichqoncha-kotar": "mouseup",
+  "sichqoncha-yurish": "mousemove",
+  "sichqoncha-sudrash": "mousedrag",
 };
 
 const uzScriptOverrides = {

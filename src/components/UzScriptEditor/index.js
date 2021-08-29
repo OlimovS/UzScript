@@ -1,4 +1,7 @@
-import { UnControlled as CodeMirror } from "react-codemirror2";
+import {
+  UnControlled as CodeMirror,
+  Controlled as ViewCodeMirror,
+} from "react-codemirror2";
 import PropTypes from "prop-types";
 
 import { EDITOR_LANGUAGE } from "../../utils/constants";
@@ -33,3 +36,19 @@ function UzScriptEditor({
 }
 
 export default UzScriptEditor;
+
+export const ViewOnlyCodeMirror = ({
+  code,
+  mode = "javascript",
+  theme = "material",
+}) => (
+  <ViewCodeMirror
+    value={code}
+    options={{
+      mode: mode,
+      theme: theme,
+      lineNumbers: true,
+      readOnly: "nocursor",
+    }}
+  />
+);

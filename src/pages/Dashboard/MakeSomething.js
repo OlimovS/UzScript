@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import Canvas from "../../components/playground/Canvas";
-import UzScriptEditor from "../../components/UzScriptEditor";
+import UzScriptEditor, {
+  ViewOnlyCodeMirror,
+} from "../../components/UzScriptEditor";
+import { playgroundExamples } from "../../utils/data/playgroundExamples";
 import { useWindowSize } from "../../utils/hooks";
+import { uzScriptPlayParser } from "../../uzscript-engine/playground-engine";
 import { PlaygroundToolbar, EditorToolbar } from "./MakeSomething/Toolbar";
 
 const makePropsForCanvasPlayground = (innerWidth) => {
@@ -15,31 +19,14 @@ const makePropsForCanvasPlayground = (innerWidth) => {
   return { height: size, width: size };
 };
 
-// const defaultValue = "// UzScript-Play bilan dastur yasang!";
-const defaultValue = `
-// UzScript-Play bilan dastur yasang!
-// Bizda bor narsalar: tugma
-
-deylik sariqvoy = yangi Mushuk('cat', {x: 0, y: 0});
-
-funksiya maydonBoylabAylan() {
-   sariqvoy.qadamTashla(3);      
-   if(sariqvoy.chegaragaUrildimi)  {
-     sariqvoy.burulOnTomonga()
-   }      
-}
-
-paper.view.on('frame', maydonBoylabAylan);
-
-
-
-
-`;
-
 function MakeSomething(props) {
   const { innerWidth } = useWindowSize();
-  const [editorState, setEditorState] = useState(defaultValue);
+  const [defaultEditorState, setDefaultEditorState] = useState(
+    playgroundExamples[0].code
+  );
+  const [editorState, setEditorState] = useState(defaultEditorState);
   const [rerenderIndex, setRerenderIndex] = useState(0);
+
   const [cvProps, setCvProps] = useState(
     makePropsForCanvasPlayground(innerWidth)
   );
@@ -49,6 +36,10 @@ function MakeSomething(props) {
 
   const handleClickRunBtn = () => {
     setRerenderIndex((prev) => prev + 1);
+  };
+
+  const handleChangeDefaultEditorState = (id) => {
+    setDefaultEditorState(playgroundExamples.find((el) => el.id === id).code);
   };
 
   useEffect(() => {
@@ -70,11 +61,14 @@ function MakeSomething(props) {
     <div>
       <div className="d-md-flex">
         <div className="overflow-auto flex-grow-1">
-          <EditorToolbar handleClickRunBtn={handleClickRunBtn} />
-          <div className="">
+          <EditorToolbar
+            handleClickRunBtn={handleClickRunBtn}
+            handleChangeExample={handleChangeDefaultEditorState}
+          />
+          <div className="flex-grow-1">
             <UzScriptEditor
               onStateChange={handleEditorStateChange}
-              defaultValue={defaultValue}
+              defaultValue={defaultEditorState}
               className="CodeMirror-h-md-100"
               wrapClassName="CodeMirror-h-md-100"
             />
@@ -94,8 +88,8 @@ function MakeSomething(props) {
         </div>
       </div>
 
-      <div>
-        <h3>Images</h3>
+      <div className="d-none">
+        {/* <ViewOnlyCodeMirror code={uzScriptPlayParser(editorState)} /> */}
         <img src="/static/cat.svg" />
       </div>
     </div>
