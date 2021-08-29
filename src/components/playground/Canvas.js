@@ -36,7 +36,7 @@ const Canvas = (props) => {
     // paperFull.view.draw();
   }, []);
 
-  return <canvas ref={canvasRef} {...props} id="canvas" resize="true" />;
+  return <canvas ref={canvasRef} {...props} />;
 };
 
 export default Canvas;

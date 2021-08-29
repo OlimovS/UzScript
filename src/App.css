@@ -95,6 +95,20 @@
   }
 }
 
+@media (min-width: 768px) {
+  .h-md-100-50px {
+    height: calc(100% - 50px);
+  }
+
+  .h-md-100-50px .CodeMirror {
+    height: 100%;
+  }
+  .CodeMirror-h-md-100,
+  .CodeMirror-h-md-100 .CodeMirror {
+    height: 100%;
+  }
+}
+
 /* ===================================================== */
 /* ============ CODEMIRROR EDITOR LIBRARY ============== */
 /* ===================================================== */

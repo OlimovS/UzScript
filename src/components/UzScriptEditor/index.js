@@ -9,13 +9,14 @@ function UzScriptEditor({
   theme = "material",
   options = {},
   wrapClassName = "",
+  wrapStyle = {},
   ...rest
 }) {
   const handleEditorStateChange = (editor, data, value) => {
     onStateChange(value, data, editor);
   };
   return (
-    <div className={wrapClassName}>
+    <div className={wrapClassName} style={wrapStyle}>
       <CodeMirror
         {...rest}
         value={defaultValue}
