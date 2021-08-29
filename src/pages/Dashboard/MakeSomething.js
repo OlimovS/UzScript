@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useWindowSize } from "rooks";
 import Canvas from "../../components/playground/Canvas";
 import UzScriptEditor from "../../components/UzScriptEditor";
+import { useWindowSize } from "../../utils/hooks";
 import { PlaygroundToolbar, EditorToolbar } from "./MakeSomething/Toolbar";
 
 const makePropsForCanvasPlayground = (innerWidth) => {
@@ -70,10 +70,10 @@ function MakeSomething(props) {
 
   return (
     <div>
-      <div className="d-md-flex">
-        <div className="flex-grow-1 d-flex flex-column">
+      <div className="d-flex">
+        <div className="overflow-auto flex-grow-1">
           <EditorToolbar handleClickRunBtn={handleClickRunBtn} />
-          <div className="flex-grow-1">
+          <div className="">
             <UzScriptEditor
               onStateChange={handleEditorStateChange}
               defaultValue={defaultValue}
@@ -82,7 +82,7 @@ function MakeSomething(props) {
             />
           </div>
         </div>
-        <div>
+        <div className="flex-shrink-0">
           <PlaygroundToolbar />
           <div className="p-2 bg-info">
             <div className="bg-white">

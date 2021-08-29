@@ -1,11 +1,11 @@
 import { Resizable } from "re-resizable";
-import { useWindowSize } from "rooks";
 import ChallengeWorkingDesk from "./Components/ChallengeWorkDesk";
 import ChallengeQuestDesk from "./Components/ChallengeQuestDesk";
 import MiddleResizerColumn from "../../../components/MiddleResizerColumn";
 import { useParams } from "react-router-dom";
 import { useMemo } from "react";
 import { challenges } from "../../../utils/data/challenges";
+import { useWindowSize } from "../../../utils/hooks";
 
 function ChallengeSolvingBoard(props) {
   const { innerWidth } = useWindowSize();
