@@ -42,6 +42,3 @@ export default function useScriptTag() {
 
   return runcode;
 }
-
-// script.setAttribute("type", "text/paperscript");
-// script.setAttribute("data-paper-canvas", "");
