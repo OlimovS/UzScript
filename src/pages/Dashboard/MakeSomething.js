@@ -70,7 +70,7 @@ function MakeSomething(props) {
 
   return (
     <div>
-      <div className="d-flex">
+      <div className="d-md-flex">
         <div className="overflow-auto flex-grow-1">
           <EditorToolbar handleClickRunBtn={handleClickRunBtn} />
           <div className="">
