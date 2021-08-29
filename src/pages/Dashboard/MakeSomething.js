@@ -22,7 +22,7 @@ const makePropsForCanvasPlayground = (innerWidth) => {
 function MakeSomething(props) {
   const { innerWidth } = useWindowSize();
   const [defaultEditorState, setDefaultEditorState] = useState(
-    playgroundExamples[0].code
+    "// UzScipt-Play da o'z loyihalaringizni yasang!\n//Chapdagi tugma bilan oldindan tayyorlangan kodlarni ko'ring\n\n\n\n\n\n\n\n"
   );
   const [editorState, setEditorState] = useState(defaultEditorState);
   const [rerenderIndex, setRerenderIndex] = useState(0);
