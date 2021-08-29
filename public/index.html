@@ -97,13 +97,13 @@
         }
 
         __setPositionObject(next) {
-          if (next.x + this.lastOffset > paper.view._bounds.right) {
+          if (next.x + this.lastOffset > paper.view._viewSize.width) {
             this.chegaragaUrildimi = true;
-          } else if (next.x - this.lastOffset < paper.view._bounds.left) {
+          } else if (next.x - this.lastOffset < 0) {
             this.chegaragaUrildimi = true;
-          } else if (next.y + this.lastOffset > paper.view._bounds.bottom) {
+          } else if (next.y + this.lastOffset > paper.view._viewSize.height) {
             this.chegaragaUrildimi = true;
-          } else if (next.y - this.lastOffset < paper.view._bounds.top) {
+          } else if (next.y - this.lastOffset < 0) {
             this.chegaragaUrildimi = true;
           } else {
             this.position = next;
