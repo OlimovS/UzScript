@@ -9,6 +9,7 @@
     "bootstrap": "^5.1.0",
     "bootstrap-css-only": "^4.4.1",
     "codemirror": "^5.62.3",
+    "paper": "^0.12.15",
     "re-resizable": "^6.9.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
