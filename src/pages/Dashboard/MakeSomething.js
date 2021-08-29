@@ -18,18 +18,23 @@ const makePropsForCanvasPlayground = (innerWidth) => {
 // const defaultValue = "// UzScript-Play bilan dastur yasang!";
 const defaultValue = `// UzScript-Play bilan dastur yasang!
 
-var mushuk = new Mushuk();
+var mushuk = new Mushuk('cat', {x: 0, y: 0});
 
 
 var btn = document.getElementById('playgroundRunID'); 
 
 btn.addEventListener('click', function() {
-  mushuk.qadamTashla(12);                     
+  mushuk.qadamTashla(30);      
+  if(mushuk.chegaragaUrildimi)  {
+    mushuk.burulOnTomonga()
+  }               
  })
 
- paper.view.onFrame = function(event) {
-  mushuk.qadamTashla(3);                     
-}
+//  paper.view.onFrame = function(event) {
+//   mushuk.qadamTashla(3);    
+
+// }
+
 
 `;
 

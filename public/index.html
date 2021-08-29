@@ -31,43 +31,122 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script>
+      // Jonivor sinfi
       class Jonivor extends paper.Raster {
         constructor(props) {
           super(props);
-          this.lastOffset = 2;
+          this.lastOffset = Math.floor(this.width / 2);
+          this.chegaragaUrildimi = false;
+          this.direction = "right";
+          this.directionRotationMap = {
+            right: {
+              right: "bottom",
+              left: "top",
+            },
+            left: {
+              right: "top",
+              left: "bottom",
+            },
+            top: {
+              right: "right",
+              left: "left",
+            },
+            bottom: {
+              left: "right",
+              right: "left",
+            },
+          };
+        }
+
+        __getNewDirection(currDirection, rotation) {
+          return this.directionRotationMap[currDirection][rotation];
+        }
+
+        __getStepPosition(step) {
+          let stepPosition;
+          switch (this.direction) {
+            case "right":
+              stepPosition = new paper.Point(step, 0);
+              break;
+            case "left":
+              stepPosition = new paper.Point(-step, 0);
+              break;
+            case "top":
+              stepPosition = new paper.Point(0, -step);
+              break;
+            case "bottom":
+              stepPosition = new paper.Point(0, step);
+              break;
+          }
+          return stepPosition;
+        }
+
+        __setInitialPosition(pos) {
+          if (pos.x + this.lastOffset > paper.view._viewSize.width) {
+            pos.x = paper.view._viewSize.width - this.lastOffset - 1;
+          } else if (pos.x - this.lastOffset < 0) {
+            pos.x = this.lastOffset + 1;
+          }
+          if (pos.y + this.lastOffset > paper.view._viewSize.height) {
+            pos.y = paper.view._bounds.bottom - this.lastOffset - 1;
+          } else if (pos.y - this.lastOffset < 0) {
+            pos.y = this.lastOffset + 1;
+          }
+
+          this.position = pos;
         }
 
         __setPositionObject(next) {
           if (next.x + this.lastOffset > paper.view._bounds.right) {
-            next.x = paper.view._bounds.right - this.lastOffset;
+            this.chegaragaUrildimi = true;
           } else if (next.x - this.lastOffset < paper.view._bounds.left) {
-            next.x = paper.view._bounds.left + this.lastOffset;
-          }
-
-          if (next.y + this.lastOffset > paper.view._bounds.bottom) {
-            next.y = paper.view._bounds.bottom - this.lastOffset;
+            this.chegaragaUrildimi = true;
+          } else if (next.y + this.lastOffset > paper.view._bounds.bottom) {
+            this.chegaragaUrildimi = true;
           } else if (next.y - this.lastOffset < paper.view._bounds.top) {
-            next.y = paper.view._bounds.top + this.lastOffset;
+            this.chegaragaUrildimi = true;
+          } else {
+            this.position = next;
           }
-          this.position = next;
         }
-      }
-      class Mushuk extends Jonivor {
-        constructor(name = "cat", position = new paper.Point(10, 10)) {
-          super("/static/cat.svg");
-          this.on("load", function () {
-            this.position = position;
-          });
+
+        burulOnTomonga() {
+          // console.log("burulongga : ", this.chegaragaUrildimi);
+          if (this.chegaragaUrildimi) {
+            this.chegaragaUrildimi = false;
+          }
+          this.rotate(90);
+
+          this.direction = this.__getNewDirection(this.direction, "right");
         }
+
+        burulChapTomonga() {
+          if (this.chegaragaUrildimi) {
+            this.chegaragaUrildimi = false;
+          }
+          this.rotate(-90);
+          this.direction = this.__getNewDirection(this.direction, "left");
+        }
+
         qadamTashla(qadam) {
-          console.log(this.position);
           try {
-            const nextPosition = this.position.add(new paper.Point(qadam, 0));
+            const nextPosition = this.position.add(
+              this.__getStepPosition(qadam)
+            );
+            console.log("qadamTashla ", this.direction, nextPosition);
             // const prev = this.position.clone();
             this.__setPositionObject(nextPosition);
           } catch (error) {
             console.log("Error ", error.name, error.message);
           }
+        }
+      }
+
+      // Mushuk sinfi
+      class Mushuk extends Jonivor {
+        constructor(name = "cat", position = new paper.Point(0, 0)) {
+          super("/static/cat.svg");
+          this.__setInitialPosition(position);
         }
       }
     </script>

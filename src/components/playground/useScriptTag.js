@@ -3,7 +3,6 @@ import { CANVAS_ID } from "../../utils/constants";
 
 const makeScriptCode = (code) => `
 // Removing prev connections
-    
 document.getElementById('playgroundRunID').outerHTML = document.getElementById('playgroundRunID').outerHTML; 
 paper.clear();
 paper.remove();
@@ -13,9 +12,9 @@ var canvas = document.getElementById('${CANVAS_ID}');
 paper.setup(canvas);
 
 
-
 // Actual code
 ${code}
+
 
 `;
 
