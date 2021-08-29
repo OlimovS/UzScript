@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "rooks";
 import Canvas from "../../components/playground/Canvas";
 import UzScriptEditor from "../../components/UzScriptEditor";
+import PlaygroundToolbar from "./MakeSomething/Toolbar";
 
 const makePropsForCv = (innerWidth) => {
   let size;
@@ -44,11 +45,19 @@ function MakeSomething(props) {
             wrapClassName="CodeMirror-h-md-100"
           />
         </div>
-        <div className="p-2 bg-info">
-          <div className="bg-white">
-            <Canvas {...cvProps} />
+        <div>
+          <PlaygroundToolbar />
+          <div className="p-2 bg-info">
+            <div className="bg-white">
+              <Canvas {...cvProps} />
+            </div>
           </div>
         </div>
+      </div>
+
+      <div>
+        <h3>Images</h3>
+        <img src="/static/cat.svg" />
       </div>
     </div>
   );
