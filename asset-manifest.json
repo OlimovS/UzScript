@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/UzScript/static/css/main.8f105661.chunk.css",
+    "main.js": "/UzScript/static/js/main.54e600c2.chunk.js",
+    "main.js.map": "/UzScript/static/js/main.54e600c2.chunk.js.map",
+    "runtime-main.js": "/UzScript/static/js/runtime-main.7c68908f.js",
+    "runtime-main.js.map": "/UzScript/static/js/runtime-main.7c68908f.js.map",
+    "static/css/2.f97c6669.chunk.css": "/UzScript/static/css/2.f97c6669.chunk.css",
+    "static/js/2.2eb16a09.chunk.js": "/UzScript/static/js/2.2eb16a09.chunk.js",
+    "static/js/2.2eb16a09.chunk.js.map": "/UzScript/static/js/2.2eb16a09.chunk.js.map",
+    "index.html": "/UzScript/index.html",
+    "static/css/2.f97c6669.chunk.css.map": "/UzScript/static/css/2.f97c6669.chunk.css.map",
+    "static/css/main.8f105661.chunk.css.map": "/UzScript/static/css/main.8f105661.chunk.css.map",
+    "static/js/2.2eb16a09.chunk.js.LICENSE.txt": "/UzScript/static/js/2.2eb16a09.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c68908f.js",
+    "static/css/2.f97c6669.chunk.css",
+    "static/js/2.2eb16a09.chunk.js",
+    "static/css/main.8f105661.chunk.css",
+    "static/js/main.54e600c2.chunk.js"
+  ]
+}
