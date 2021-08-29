@@ -16,15 +16,18 @@ export const getEarlyComment = (code) => {
   return LANG_COMMENTS[1];
 };
 
-export default function uzScriptParser(uzscript) {
+export default function uzScriptParser(
+  uzscript,
+  keywords = UzScriptToJavascriptValues
+) {
   const codeArray = uzscript.split("\n");
 
   let isMultilineCommentGoing = false;
 
   const convertUzScriptToJS = (code) => {
-    for (const uzScriptKey in UzScriptToJavascriptValues) {
+    for (const uzScriptKey in keywords) {
       if (code.includes(uzScriptKey)) {
-        const altJSValue = UzScriptToJavascriptValues[uzScriptKey];
+        const altJSValue = keywords[uzScriptKey];
         const regex = new RegExp(uzScriptKey, "g");
         code = code.replace(regex, altJSValue);
       }

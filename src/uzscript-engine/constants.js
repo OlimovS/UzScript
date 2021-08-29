@@ -31,7 +31,7 @@ const basicKeywords = {
   elonqilinmagan: "undefined",
   sonemas: "NaN",
   Cheksizlik: "Infinity",
-  bu: "this",
+  "bu ": "this",
   sinf: "class",
   super: "super",
   yield: "yield",

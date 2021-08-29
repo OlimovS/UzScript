@@ -16,24 +16,22 @@ const makePropsForCanvasPlayground = (innerWidth) => {
 };
 
 // const defaultValue = "// UzScript-Play bilan dastur yasang!";
-const defaultValue = `// UzScript-Play bilan dastur yasang!
+const defaultValue = `
+// UzScript-Play bilan dastur yasang!
+// Bizda bor narsalar: tugma
 
-var mushuk = new Mushuk('cat', {x: 0, y: 0});
+deylik sariqvoy = yangi Mushuk('cat', {x: 0, y: 0});
+
+funksiya maydonBoylabAylan() {
+   sariqvoy.qadamTashla(3);      
+   if(sariqvoy.chegaragaUrildimi)  {
+     sariqvoy.burulOnTomonga()
+   }      
+}
+
+paper.view.on('frame', maydonBoylabAylan);
 
 
-var btn = document.getElementById('playgroundRunID'); 
-
-btn.addEventListener('click', function() {
-  mushuk.qadamTashla(30);      
-  if(mushuk.chegaragaUrildimi)  {
-    mushuk.burulOnTomonga()
-  }               
- })
-
-//  paper.view.onFrame = function(event) {
-//   mushuk.qadamTashla(3);    
-
-// }
 
 
 `;

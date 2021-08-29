@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CANVAS_ID } from "../../utils/constants";
+import { uzScriptPlayParser } from "../../uzscript-engine/playground-engine";
 
 const makeScriptCode = (code) => `
 // Removing prev connections
@@ -11,9 +12,11 @@ paper.remove();
 var canvas = document.getElementById('${CANVAS_ID}');
 paper.setup(canvas);
 
+var tugma = document.getElementById('playgroundRunID'); 
+
 
 // Actual code
-${code}
+${uzScriptPlayParser(code)}
 
 
 `;
