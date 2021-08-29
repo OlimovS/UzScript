@@ -21,7 +21,7 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
   const [editorState, setEditorState] = useState(defaultValue);
   const [codeRunResponse, setCodeRunResponse] = useState({});
 
-  const handleChangeEditorState = (editor, data, value) => {
+  const handleEditorStateChange = (value) => {
     setEditorState(value);
   };
 
@@ -52,7 +52,7 @@ funksiya ${challenge?.solutionSection?.functionName} (${makeFuncArguments(
         <UzScriptEditor
           defaultValue={defaultValue}
           theme="material"
-          handleChangeEditorState={handleChangeEditorState}
+          onStateChange={handleEditorStateChange}
           className="CodeMirror-h-sm-100"
           wrapClassName="CodeMirror-h-sm-100"
         />

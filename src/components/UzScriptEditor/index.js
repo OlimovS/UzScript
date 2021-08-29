@@ -1,15 +1,19 @@
 import { UnControlled as CodeMirror } from "react-codemirror2";
+import PropTypes from "prop-types";
 
 import { EDITOR_LANGUAGE } from "../../utils/constants";
 
 function UzScriptEditor({
-  handleChangeEditorState,
+  onStateChange,
   defaultValue = "// UzScriptda kod yozib boshlang\n",
   theme = "material",
   options = {},
   wrapClassName = "",
   ...rest
 }) {
+  const handleEditorStateChange = (editor, data, value) => {
+    onStateChange(value, data, editor);
+  };
   return (
     <div className={wrapClassName}>
       <CodeMirror
@@ -21,7 +25,7 @@ function UzScriptEditor({
           lineNumbers: true,
           ...options,
         }}
-        onChange={handleChangeEditorState}
+        onChange={handleEditorStateChange}
       />
     </div>
   );
