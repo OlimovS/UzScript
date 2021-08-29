@@ -25,10 +25,52 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      class Jonivor extends paper.Raster {
+        constructor(props) {
+          super(props);
+          this.lastOffset = 2;
+        }
+
+        __setPositionObject(next) {
+          if (next.x + this.lastOffset > paper.view._bounds.right) {
+            next.x = paper.view._bounds.right - this.lastOffset;
+          } else if (next.x - this.lastOffset < paper.view._bounds.left) {
+            next.x = paper.view._bounds.left + this.lastOffset;
+          }
+
+          if (next.y + this.lastOffset > paper.view._bounds.bottom) {
+            next.y = paper.view._bounds.bottom - this.lastOffset;
+          } else if (next.y - this.lastOffset < paper.view._bounds.top) {
+            next.y = paper.view._bounds.top + this.lastOffset;
+          }
+          this.position = next;
+        }
+      }
+      class Mushuk extends Jonivor {
+        constructor(name = "cat", position = new paper.Point(10, 10)) {
+          super("/static/cat.svg");
+          this.on("load", function () {
+            this.position = position;
+          });
+        }
+        qadamTashla(qadam) {
+          console.log(this.position);
+          try {
+            const nextPosition = this.position.add(new paper.Point(qadam, 0));
+            // const prev = this.position.clone();
+            this.__setPositionObject(nextPosition);
+          } catch (error) {
+            console.log("Error ", error.name, error.message);
+          }
+        }
+      }
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
